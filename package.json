@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js --mode production",
     "watch": "webpack --config webpack.config.js --mode production --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"No tests\"",
     "xpi": "npm run build && web-ext build -s ./dist -a artifacts --overwrite-dest",
     "crx": "chromium --pack-extension=dist && mkdir -p ./artifacts && mv dist.crx ./artifacts/pt-coupons.crx",
     "crx-update": "chromium --pack-extension=./dist --pack-extension-key=./dist.pem && mkdir -p ./artifacts && mv dist.crx ./artifacts/pt-coupons.crx",
