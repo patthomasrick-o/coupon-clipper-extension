@@ -3,8 +3,9 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: {
-    popup: "./src/popup.tsx",
-    background: "./src/background.ts",
+    popup: "./src/extension/popup.tsx",
+    background: "./src/extension/background.ts",
+    cvs: "./src/contentScripts/cvs.ts",
   },
   devtool: "source-map",
   output: {

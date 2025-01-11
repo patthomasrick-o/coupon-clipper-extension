@@ -1,3 +1,7 @@
+*.crx
+*.pem
+*.xpi
+*.zip
 artifacts
 old-scripts
 

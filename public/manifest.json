@@ -7,11 +7,8 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "background": {
-    "service_worker": "background.js",
-    "type": "module"
-  },
-  "permissions": ["activeTab", "storage"],
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
   "browser_specific_settings": {
     "gecko": {
       "id": "coupons@patrickwthomas.net"
