@@ -79,5 +79,5 @@ jobs:
       - name: Publish artifact
         uses: actions/upload-artifact@v4
         with:
-          name: pt-coupon-unpacked
-          path: ./artifacts/dist.zip
+          name: pt-coupon-unpacked 
+          path: ./artifacts/dist.zip 
