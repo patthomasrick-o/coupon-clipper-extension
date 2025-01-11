@@ -1,0 +1,3 @@
+interface IClipper {
+  clip(): void;
+}

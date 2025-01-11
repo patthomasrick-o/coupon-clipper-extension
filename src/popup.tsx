@@ -1,7 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 
 const Popup = () => {
+  
+
   return (
     <div>
       <h1>Hello, Chrome Extension!</h1>
@@ -9,9 +11,5 @@ const Popup = () => {
   );
 };
 
-ReactDOM.createPortal(
-  <React.StrictMode>
-    <Popup />
-  </React.StrictMode>,
-  document.getElementById("root") as HTMLElement
-);
+const root = createRoot(document.getElementById("root")!);
+root.render(<Popup />);

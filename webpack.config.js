@@ -1,15 +1,18 @@
-const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require("path");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: {
     popup: "./src/popup.tsx",
     background: "./src/background.ts",
-    content: "./src/content.ts",
   },
+  devtool: "source-map",
   output: {
-    path: path.resolve(__dirname, "dist/js"),
+    path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
+  },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js"],
   },
   module: {
     rules: [
@@ -20,17 +23,9 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: [".tsx", ".ts", ".js"],
-  },
   plugins: [
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: "public",
-          to: "",
-        },
-      ],
+    new CopyPlugin({
+      patterns: [{ from: "public", to: "." }],
     }),
   ],
 };
