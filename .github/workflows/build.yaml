@@ -78,10 +78,16 @@ jobs:
         run: npm run test
 
       - name: "Build: Unpacked"
-        run: npm run build zip -r dist.zip ./dist
+        run: |
+          npm run build
+          mkdir -p artifacts
+          zip -r ./artifacts/dist.zip ./dist
 
-      - name: Build
-        run: npm run build
+      - name: Publish artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pt-coupon-unpacked
+          path: ./dist.zip
 
   #     - name: Set up Go
   #       uses: actions/setup-go@v5
