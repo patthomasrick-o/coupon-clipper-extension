@@ -4,6 +4,12 @@
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     "@semantic-release/github",
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "node script/update-manifest-version.js ${nextRelease.version}"
+      }
+    ],
     {
       "path": "@rpidanny/semantic-release-update-package.json",
       "packageJsonPath": "./package.json"
