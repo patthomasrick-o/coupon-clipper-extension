@@ -1,6 +1,6 @@
 {
   "name": "pt-coupons-extension",
-  "version": "1.0.3",
+  "version": "0.0.15",
   "description": "",
   "main": "index.js",
   "scripts": {
