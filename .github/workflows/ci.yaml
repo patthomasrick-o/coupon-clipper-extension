@@ -1,12 +1,81 @@
-name: build
+name: ci
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
+  test:
+    runs-on: arc-runner-set
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "21"
+
+      - name: Install dependencies
+        run: npm ci --save-dev
+
+      - name: Run tests
+        run: npm run test
+
+  semantic-release:
+    runs-on: arc-runner-set
+    concurrency:
+      group: semantic-release
+    needs:
+      - test
+    if: github.event_name == 'push'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Run ptsemrelease.py
+        run: |
+          python3 scripts/ptsemrelease.py \
+              --version 0.0.0 \
+              --prerelease-pattern develop develop \
+              --commit \
+              --commit-push \
+              --tag \
+              --tag-create-for-prerelease \
+              --tag-force \
+              --tag-force-push \
+              --tag-push \
+              --branch \
+              --branch-force \
+              --branch-push \
+              --branch-create-minor \
+              --branch-create-major \
+              --string-write ./VERSION \
+              --json-write ./public/manifest.json version \
+              --json-write ./package.json version
+
   build:
     runs-on: arc-runner-set
+    needs:
+      - test
 
     steps:
       - name: Checkout code
