@@ -1,32 +1,52 @@
-name: Semantic Versioning
-
-on:
-  push:
-    branches: [main]
+name: ptsemrelease.py
 
 permissions:
   contents: write
-  issues: write
-  pull-requests: write
+
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  semver:
+  semantic-release:
     runs-on: arc-runner-set
+    concurrency:
+      group: semantic-release
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          node-version: "21"
+          python-version: "3.13"
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Semantic Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+      - name: Run ptsemrelease.py
+        run: |
+          python3 scripts/ptsemrelease.py \
+              --version 0.0.0 \
+              --prerelease-pattern develop develop \
+              --commit \
+              --commit-push \
+              --tag \
+              --tag-create-for-prerelease \
+              --tag-force \
+              --tag-force-push \
+              --tag-push \
+              --branch \
+              --branch-force \
+              --branch-push \
+              --branch-create-minor \
+              --branch-create-major \
+              --string-write ./VERSION \
+              --json-write ./public/manifest.json version \
+              --json-write ./package.json version

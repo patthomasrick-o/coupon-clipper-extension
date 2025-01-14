@@ -1,9 +1,7 @@
-name: Build
+name: build
 
 on:
   push:
-    branches: [main]
-  pull_request:
     branches: [main]
 
 jobs:
@@ -11,6 +9,35 @@ jobs:
     runs-on: arc-runner-set
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Run ptsemrelease.py
+        run: |
+          python3 scripts/ptsemrelease.py \
+              --version 0.0.0 \
+              --string-write ./VERSION \
+              --json-write ./public/manifest.json version \
+              --json-write ./package.json version
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "21"
+
+      - name: Install dependencies
+        run: npm ci --save-dev
+
+      - name: Run tests
+        run: npm run test
+
       - name: Install software
         run: |
           sudo apt-get update
@@ -55,20 +82,6 @@ jobs:
             wget \
             xdg-utils \
             zip
-
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "21"
-
-      - name: Install dependencies
-        run: npm ci --save-dev
-
-      - name: Run tests
-        run: npm run test
 
       - name: "Build: Unpacked"
         run: |
