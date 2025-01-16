@@ -162,7 +162,8 @@ jobs:
 
       - name: "Build: Unpacked"
         run: |
-          npm run all
+          npm run build
+          npm run xpi
 
       - name: Publish artifacts
         uses: actions/upload-artifact@v4
