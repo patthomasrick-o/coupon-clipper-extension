@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/chrome-manifest",
   "manifest_version": 3,
   "name": "PT Coupon Clipper",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "Clip coupons!",
   "action": {
     "default_popup": "index.html"
