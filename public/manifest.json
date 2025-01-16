@@ -5,15 +5,10 @@
   "version": "0.0.18",
   "description": "Clip coupons!",
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "index.html"
   },
-  "permissions": [
-    "activeTab",
-    "scripting"
-  ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
   "browser_specific_settings": {
     "gecko": {
       "id": "coupons@patrickwthomas.net"

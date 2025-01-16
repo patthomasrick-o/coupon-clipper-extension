@@ -1,4 +1,4 @@
-import IClipper from "./IClipper";
+import IClipper from "../lib/IClipper";
 
 const UNCLIPPED_QUERY =
   "cvs-coupon-container .coupon-action.button-blue.sc-send-to-card-action";
