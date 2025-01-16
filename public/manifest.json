@@ -2,13 +2,18 @@
   "$schema": "https://json.schemastore.org/chrome-manifest",
   "manifest_version": 3,
   "name": "PT Coupon Clipper",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Clip coupons!",
   "action": {
     "default_popup": "index.html"
   },
-  "permissions": ["activeTab", "scripting"],
-  "host_permissions": ["<all_urls>"],
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "browser_specific_settings": {
     "gecko": {
       "id": "coupons@patrickwthomas.net"
