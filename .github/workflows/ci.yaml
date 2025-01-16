@@ -99,6 +99,10 @@ jobs:
               --json-write ./public/manifest.json version \
               --json-write ./package.json version
 
+      - name: Load version into github var
+        id: version
+        run: echo "::set-output name=version::$(cat VERSION)"
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -169,4 +173,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           # All crx and zip in dist
-          path: dist/*
+          name: artifacts-${{ steps.version.outputs.version }}
+          path: artifacts/*.zip
+          compression-level: 0
