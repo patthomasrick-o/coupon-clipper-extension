@@ -155,6 +155,10 @@ jobs:
             xdg-utils \
             zip
 
+      - name: "Get CRX secret"
+        # In CRX_PEM environment variable
+        run: echo "${{ secrets.CRX_PEM }}" > dist.pem
+
       - name: "Build: Unpacked"
         run: |
           npm run all
