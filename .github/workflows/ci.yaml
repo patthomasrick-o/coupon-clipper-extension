@@ -157,12 +157,10 @@ jobs:
 
       - name: "Build: Unpacked"
         run: |
-          npm run build
-          mkdir -p artifacts
-          zip -r ./artifacts/dist.zip ./dist
+          npm run all
 
-      - name: Publish artifact
+      - name: Publish artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: pt-coupon-unpacked
-          path: ./artifacts/dist.zip
+          # All crx and zip in dist
+          path: dist/*
