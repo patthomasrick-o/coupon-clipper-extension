@@ -4,16 +4,18 @@
   "name": "PT Coupon Clipper",
   "version": "0.0.25",
   "description": "Clip coupons!",
+  "homepage_url": "https://patrickwthomas.net",
+  "icons": {
+    "16": "16.png",
+    "48": "48.png",
+    "128": "128.png",
+    "256": "256.png"
+  },
   "action": {
     "default_popup": "index.html"
   },
-  "permissions": [
-    "activeTab",
-    "scripting"
-  ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
   "browser_specific_settings": {
     "gecko": {
       "id": "coupons@patrickwthomas.net"

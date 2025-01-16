@@ -4,7 +4,6 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 import { createRoot } from "react-dom/client";
 
 import "./style/App.scss";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function onClipClick() {
   Utility.getCurrentTab().then((tab) => {
@@ -21,8 +20,10 @@ const App = () => {
     <div className="coupon-clipper">
       <Row>
         <Col>
-          <h1>Hello, world!</h1>
-          <Button onClick={onClipClick}>Click to clip</Button>
+          <h1 className="text-light shake">FEED ME COUPONS 😈</h1>
+          <Button className="shake" onClick={onClipClick}>
+            EAT NOW
+          </Button>
         </Col>
       </Row>
     </div>

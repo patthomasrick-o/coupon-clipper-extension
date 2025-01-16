@@ -69,7 +69,7 @@ export default class CvsExtraCareClipper implements IClipper {
   async clipCoupons() {
     await this.discoverCoupons();
 
-    this.cullClipped();
+    // this.cullClipped();
 
     let coupons = this.getUnclippedCoupons();
 

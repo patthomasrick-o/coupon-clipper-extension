@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js --mode production",
     "build-clean": "npm run clean && npm run build",
-    "watch": "npm run clean && webpack --config webpack.config.js --mode production --watch",
+    "watch": "webpack --config webpack.config.js --mode production --watch",
     "serve": "webpack serve --config webpack.config.js --mode production",
     "test": "echo \"No tests\"",
     "xpi": "web-ext build -s ./dist -a artifacts --overwrite-dest",
