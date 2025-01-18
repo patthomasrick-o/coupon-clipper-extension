@@ -14,13 +14,12 @@
   "action": {
     "default_popup": "index.html"
   },
-  "permissions": [
-    "activeTab",
-    "scripting"
-  ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "permissions": ["activeTab", "scripting"],
+  "background": {
+    "type": "module",
+    "scripts": ["background.js"]
+  },
+  "host_permissions": ["<all_urls>"],
   "browser_specific_settings": {
     "gecko": {
       "id": "coupons@patrickwthomas.net"

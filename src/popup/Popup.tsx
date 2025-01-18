@@ -1,29 +1,27 @@
 import React from "react";
 import Utility from "./Utility";
-import { Button, Container, Row, Col } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
 import { createRoot } from "react-dom/client";
 
-import "./style/App.scss";
+import "./style/Popup.scss";
 
 function onClipClick() {
   Utility.getCurrentTab().then((tab) => {
     if (!tab.id) throw new Error("No tab");
     chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      files: ["cvs.js"],
+      files: ["clipper.js"],
     });
   });
 }
 
-const App = () => {
+const Popup = () => {
   return (
     <div className="coupon-clipper">
       <Row>
         <Col>
-          <h1 className="text-light shake">FEED ME COUPONS 😈</h1>
-          <Button className="shake" onClick={onClipClick}>
-            EAT NOW
-          </Button>
+          <h1 className="text-light">Clipper</h1>
+          <Button onClick={onClipClick}>Clip</Button>
         </Col>
       </Row>
     </div>
@@ -31,4 +29,4 @@ const App = () => {
 };
 
 const root = createRoot(document.getElementById("root")!);
-root.render(<App />);
+root.render(<Popup />);

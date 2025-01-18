@@ -4,9 +4,9 @@ const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
   // Entry points for the application
   entry: {
-    app: "./src/extension/App.tsx",
-    background: "./src/extension/background.ts",
-    cvs: "./src/contentScripts/cvs/cvs.ts",
+    popup: "./src/popup/Popup.tsx",
+    background: "./src/background/Background.ts",
+    clipper: "./src/contentScripts/Clipper.ts",
   },
 
   // Source maps for easier debugging

@@ -10,5 +10,9 @@
     "noEmitOnError": true,
     "jsx": "react",
     "moduleResolution": "NodeNext"
-  }
+  },
+  "typeAcquisition": {
+    "include": ["lodash", "jest"]
+  },
+  "include": ["src"]
 }
