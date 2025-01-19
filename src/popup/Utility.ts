@@ -9,10 +9,10 @@ export default class Utility {
    */
   static async getCurrentTab() {
     // Define query options to get the active tab in the current window
-    let queryOptions = { active: true, currentWindow: true };
+    const queryOptions = { active: true, currentWindow: true };
 
     // Query the tabs API with the specified options and get the first result
-    let [tab] = await chrome.tabs.query(queryOptions);
+    const [tab] = await chrome.tabs.query(queryOptions);
 
     // Return the active tab
     return tab;

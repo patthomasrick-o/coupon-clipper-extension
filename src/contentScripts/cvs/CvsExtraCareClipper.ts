@@ -35,7 +35,7 @@ export default class CvsExtraCareClipper implements IClipper {
       await new Promise((resolve) => setTimeout(resolve, 500));
 
       // Count the current number of coupons.
-      let newCouponCount = this.countAllCoupons();
+      const newCouponCount = this.countAllCoupons();
 
       // If the number of coupons has not changed, then we have reached the end of the page.
       if (newCouponCount <= currentCouponCount) break;
@@ -108,8 +108,8 @@ export default class CvsExtraCareClipper implements IClipper {
 
     while (coupons.length > 0) {
       // Choose a random coupon.
-      let index = Math.floor(Math.random() * coupons.length);
-      let coupon = coupons[index];
+      const index = Math.floor(Math.random() * coupons.length);
+      const coupon = coupons[index];
 
       console.debug("Clicking", index, coupons.length, coupon);
       (coupon as HTMLElement).click();

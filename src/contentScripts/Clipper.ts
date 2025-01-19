@@ -1,4 +1,4 @@
-import CvsExtraCareClipper from "./cvs/CvsExtraCareClipper";
+import CvsExtraCareClipper from "./Cvs/CvsExtraCareClipper";
 
 function cvs() {
   new CvsExtraCareClipper().clipCoupons();
