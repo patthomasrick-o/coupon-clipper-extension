@@ -1,4 +1,4 @@
-import ClipStageEnum from "./ClipStageEnum";
+import ClipStageEnum from "./ClipStageEnum.js";
 
 /** A message about the current clipping stage. */
 export default class ClipStageMessage {

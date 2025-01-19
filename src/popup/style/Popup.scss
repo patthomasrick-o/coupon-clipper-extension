@@ -1,26 +1,3 @@
-/* https://coolors.co/273043-9197ae-eff6ee-f02d3a-dd0426 */
-$prussian-blue: #273043ff;
-$cool-gray: #9197aeff;
-$mint-cream: #eff6eeff;
-$imperial-red: #f02d3aff;
-$rojo: #dd0426ff;
-
-$body-bg: $prussian-blue;
-$body-color: $mint-cream;
-
-@import "bootstrap/scss/bootstrap";
-
-body {
-  font-family: "Roboto", sans-serif;
-
-  /* Gentle gradient, prussian blue */
-  background: linear-gradient(
-    135deg,
-    $prussian-blue,
-    lighten($prussian-blue, 10%)
-  );
-}
-
 .coupon-clipper {
   /* Spacing */
   width: 400px;

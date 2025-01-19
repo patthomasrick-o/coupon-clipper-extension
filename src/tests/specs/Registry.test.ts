@@ -1,6 +1,6 @@
 import * as _ from "lodash";
-import Registry from "../../lib/Registry";
-import RegistrySpy from "../../lib/RegistrySpy";
+import Registry from "@app/lib/Registry.js";
+import RegistrySpy from "@app/lib/RegistrySpy.js";
 
 describe("Registry", () => {
   describe("inst", () => {
@@ -11,7 +11,6 @@ describe("Registry", () => {
     test("should return the same instance always", () => {
       const instance1 = new Registry().inst();
       const instance2 = new Registry().inst();
-
       expect(instance1).toBe(instance2);
     });
   });

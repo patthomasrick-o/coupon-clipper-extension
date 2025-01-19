@@ -1,8 +1,8 @@
-import IRegistry from "./IRegistry";
-import ISingletonStatic from "./ISingleton";
 import _ from "lodash";
+import IRegistry from "./IRegistry.js";
+import ISingleton from "./ISingleton.js";
 
-export default class Registry implements IRegistry, ISingletonStatic<Registry> {
+export default class Registry implements IRegistry, ISingleton<Registry> {
   protected static instance: Registry;
 
   protected registry: object = {};

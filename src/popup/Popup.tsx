@@ -1,10 +1,10 @@
 import React from "react";
-import Utility from "./Utility";
-import { Button, Row, Col, Container } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { createRoot } from "react-dom/client";
 
+import PopupNavbar from "./components/PopupNavbar.js";
 import "./style/Popup.scss";
-import PopupNavbar from "./components/PopupNavbar";
+import Utility from "./Utility.js";
 
 function onClipClick() {
   Utility.getCurrentTab().then((tab) => {

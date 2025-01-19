@@ -1,4 +1,4 @@
-import IStorage from "../lib/IStorage";
+import IStorage from "@app/lib/IStorage.js";
 
 /**
  * Controller for all storage for the app.

@@ -1,6 +1,6 @@
-import ClipStageEnum from "../../lib/communication/ClipStageEnum";
-import ClipStageMessage from "../../lib/communication/ClipStageMessage";
-import IClipper from "../../lib/IClipper";
+import ClipStageEnum from "@app/lib/communication/ClipStageEnum.js";
+import ClipStageMessage from "@app/lib/communication/ClipStageMessage.js";
+import IClipper from "@app/lib/IClipper.js";
 
 /** Query selector for unclipped coupons. */
 const UNCLIPPED_QUERY =
