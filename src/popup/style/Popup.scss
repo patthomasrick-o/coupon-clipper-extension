@@ -13,8 +13,6 @@ $body-color: $mint-cream;
 body {
   font-family: "Roboto", sans-serif;
 
-  color: $mint-cream;
-
   /* Gentle gradient, prussian blue */
   background: linear-gradient(
     135deg,
@@ -27,10 +25,13 @@ body {
   /* Spacing */
   width: 400px;
   height: 300px;
-  padding: 1em;
 
   /* Style */
   overflow: hidden;
+}
+
+.coupon-clipper-content {
+  padding: 1em;
 }
 
 .shake {
@@ -41,6 +42,10 @@ body {
   animation-name: shake;
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
+}
+
+.btn.btn-primary {
+  background: linear-gradient(135deg, $imperial-red, darken($rojo, 10%));
 }
 
 @keyframes shake {

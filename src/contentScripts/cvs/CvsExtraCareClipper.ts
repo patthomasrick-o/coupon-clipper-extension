@@ -1,3 +1,5 @@
+import ClipStageEnum from "../../lib/communication/ClipStageEnum";
+import ClipStageMessage from "../../lib/communication/ClipStageMessage";
 import IClipper from "../../lib/IClipper";
 
 /** Query selector for unclipped coupons. */
@@ -94,6 +96,10 @@ export default class CvsExtraCareClipper implements IClipper {
    * Clip all available coupons by clicking on them.
    */
   async clipCoupons() {
+    chrome.runtime.sendMessage(
+      new ClipStageMessage({ stage: ClipStageEnum.DISCOVERING })
+    );
+
     await this.discoverCoupons();
 
     // this.cullClipped();
