@@ -3,26 +3,26 @@
  */
 export default interface Storage {
   /** Read all extension storage for this extension from the sync store. */
-  readSync(): Promise<any>;
+  readSync<V>(): Promise<V>;
 
   /** Read a specific key from the sync store. */
-  readSync(key: string): Promise<any>;
+  readSync<V>(key: string): Promise<V>;
 
   /** Write all extension storage for this extension to the sync store. */
-  writeSync(storage: any): Promise<void>;
+  writeSync<V>(storage: V): Promise<void>;
 
   /** Write a specific key to the sync store. */
-  writeSync(key: string, value: any): Promise<void>;
+  writeSync<V>(key: string, value: V): Promise<void>;
 
   /** Read all extension storage for this extension from the local store. */
-  readLocal(): Promise<any>;
+  readLocal<V>(): Promise<V>;
 
   /** Read a specific key from the local store. */
-  readLocal(key: string): Promise<any>;
+  readLocal<V>(key: string): Promise<V>;
 
   /** Write all extension storage for this extension to the local store. */
-  writeLocal(storage: any): Promise<void>;
+  writeLocal<V>(storage: V): Promise<void>;
 
   /** Write a specific key to the local store. */
-  writeLocal(key: string, value: any): Promise<void>;
+  writeLocal<V>(key: string, value: V): Promise<void>;
 }

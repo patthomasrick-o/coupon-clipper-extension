@@ -1,23 +1,24 @@
-import IStorage from "../lib/IStorage";
+import IStorage from "@app/lib/IStorage.js";
 
 /**
  * Controller for all storage for the app.
  */
 export default class Storage implements IStorage {
-  readSync(): Promise<any>;
-  readSync(key: string): Promise<any>;
-  async readSync(key?: unknown): Promise<any> {
+  readSync<V>(): Promise<V>;
+  readSync<V>(key: string): Promise<V>;
+  async readSync<V>(key?: unknown): Promise<V> {
     if (typeof key === "string") {
       return new Promise((resolve) => {
         chrome.storage.sync.get(key, (result) => {
-          resolve(result[key]);
+          resolve(result[key] as V);
         });
       });
     }
+    throw new Error("Not implemented");
   }
 
-  writeSync(storage: any): Promise<void>;
-  writeSync(key: string, value: any): Promise<void>;
+  writeSync<V>(storage: V): Promise<void>;
+  writeSync<V>(key: string, value: V): Promise<void>;
   async writeSync(key: unknown, value?: unknown): Promise<void> {
     if (typeof key === "string" && value !== undefined) {
       return new Promise((resolve) => {
@@ -30,8 +31,8 @@ export default class Storage implements IStorage {
     }
   }
 
-  writeLocal(storage: any): Promise<void>;
-  writeLocal(key: string, value: any): Promise<void>;
+  writeLocal<V>(storage: V): Promise<void>;
+  writeLocal<V>(key: string, value: V): Promise<void>;
   async writeLocal(key: unknown, value?: unknown): Promise<void> {
     if (typeof key === "string" && value !== undefined) {
       return new Promise((resolve) => {
@@ -39,14 +40,13 @@ export default class Storage implements IStorage {
           resolve();
         });
       });
-    } else if (typeof key === "object") {
-      throw new Error("Not implemented");
     }
+    throw new Error("Not implemented");
   }
 
-  readLocal(): Promise<any>;
-  readLocal(key: string): Promise<any>;
-  async readLocal(key?: unknown): Promise<any> {
+  readLocal<V>(): Promise<V>;
+  readLocal<V>(key: string): Promise<V>;
+  async readLocal<V>(key?: unknown): Promise<V> {
     if (typeof key === "string") {
       return new Promise((resolve) => {
         chrome.storage.local.get(key, (result) => {
@@ -56,9 +56,10 @@ export default class Storage implements IStorage {
     } else {
       return new Promise((resolve) => {
         chrome.storage.local.get(null, (result) => {
-          resolve(result);
+          resolve(result as V);
         });
       });
     }
+    throw new Error("Not implemented");
   }
 }

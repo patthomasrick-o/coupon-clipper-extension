@@ -1,5 +1,6 @@
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
   // Entry points for the application
@@ -47,6 +48,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [{ from: "public", to: "." }],
     }),
+    new ESLintPlugin({}),
   ],
 
   // Performance settings

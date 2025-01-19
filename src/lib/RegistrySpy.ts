@@ -1,8 +1,13 @@
-import Registry from "./Registry";
+import Registry from "./Registry.js";
 
 /** Spy of the Registry class that exposes the instance. */
 export default class RegistrySpy extends Registry {
   public static instance: Registry;
 
-  public static registry: any;
+  public registry: object;
+
+  constructor() {
+    super();
+    this.registry = {};
+  }
 }

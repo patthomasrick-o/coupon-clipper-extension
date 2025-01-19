@@ -1,18 +1,24 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "module": "NodeNext",
-    "target": "es6",
+    "module": "ESNext", // or ES2022
+    "target": "ESNext",
     "esModuleInterop": true,
-    "sourceMap": true,
-    "rootDir": "src",
-    "outDir": "dist/js",
-    "noEmitOnError": true,
     "jsx": "react",
-    "moduleResolution": "NodeNext"
+    "moduleResolution": "bundler",
+    "noEmitOnError": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["src/*"]
+    }
   },
   "typeAcquisition": {
-    "include": ["lodash", "jest"]
+    "include": ["lodash", "jasmine"]
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["...", "node_modules/**/*"]
 }

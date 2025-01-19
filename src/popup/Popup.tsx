@@ -1,9 +1,10 @@
 import React from "react";
-import Utility from "./Utility";
-import { Button, Row, Col } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { createRoot } from "react-dom/client";
 
+import PopupNavbar from "./components/PopupNavbar.js";
 import "./style/Popup.scss";
+import Utility from "./Utility.js";
 
 function onClipClick() {
   Utility.getCurrentTab().then((tab) => {
@@ -18,12 +19,15 @@ function onClipClick() {
 const Popup = () => {
   return (
     <div className="coupon-clipper">
-      <Row>
-        <Col>
-          <h1 className="text-light">Clipper</h1>
-          <Button onClick={onClipClick}>Clip</Button>
-        </Col>
-      </Row>
+      <PopupNavbar />
+      <Container className="coupon-clipper-content">
+        <Row>
+          <Col>
+            <h1 className="text-light">Clipper</h1>
+            <Button onClick={onClipClick}>Clip</Button>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };

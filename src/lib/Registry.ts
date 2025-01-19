@@ -1,11 +1,15 @@
-import IRegistry from "./IRegistry";
-import ISingletonStatic from "./ISingleton";
 import _ from "lodash";
+import IRegistry from "./IRegistry.js";
+import ISingleton from "./ISingleton.js";
 
-export default class Registry implements IRegistry, ISingletonStatic<Registry> {
+export default class Registry implements IRegistry, ISingleton<Registry> {
   protected static instance: Registry;
 
-  protected registry: any = {};
+  protected registry: object = {};
+
+  constructor() {
+    this.registry = {};
+  }
 
   //
   // ISingleton
@@ -23,13 +27,13 @@ export default class Registry implements IRegistry, ISingletonStatic<Registry> {
   //
 
   get<V>(k: string): V {
-    let inst = this.inst().registry;
+    const inst = (this.inst() as Registry).registry;
     return _.get(inst, k);
   }
 
   set<V>(k: string, v: V): void {
-    let inst = this.inst().registry;
+    let inst = (this.inst() as Registry).registry;
     inst = _.set(inst, k, v);
-    Registry.instance = inst;
+    (this.inst() as Registry).registry = inst;
   }
 }
